@@ -59,3 +59,14 @@ See *dwell time*.
 Upon entering every state, set a minimum dwell time for that state to allow for energy to stabilize in the system (eg. DC bias for preamp; depending on coax length, you may want a certain minimum delay to allow the rising edge to reach full round-trip).
 
 This may remove the need for a "inter-state" delay period, and depending on what the Radio TX signal is when entering (or exiting) the state determines which direction one goes. So, in principle, by toggling TX line fast enough, it may be possible to stay in the twilight zone between RX and TX indefinitely?
+
+# Blinkenlights
+I'm thinking a front panel that shows what state the in- and outputs are in. Should at least help during development when the timing probably is way longer than necessary.
+
+![Rough sketch of front panel LEDs](/doc/Sketch_Front_Panel_State_LEDs.png)
+
+The idea here is that when idle, only the green RX LED should light up. Then, when the radio activates the TX line, the red TX LED lights up, rendering the LED yellow-ish. While both of these LEDs are lit, the individual output LEDs on the side should light up from the bottom up, until all are lit, when the green RX LED goes out and only the red TX LED is lit.
+
+> Perhaps also have the individual stages as red/green LEDs to more clearly illustrate the logic colour-code?
+
+> Perhaps also have a fancy display that shows the current delay count-down for that extra *ooh* and *aah*, at least during development?
