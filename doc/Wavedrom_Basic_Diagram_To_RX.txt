@@ -1,0 +1,66 @@
+2023-07-02 12:36
+Wavedrom_Basic_Diagram_To_RX.png
+
+{signal: [
+  {
+    name: "Radio State",
+    wave: "5|.4........",
+    data: ["TX","Receive"]
+  },
+  
+  {},
+  
+  {
+    name: "Radio TX Out", 
+    wave: "1|.0........"
+  },
+  
+  {},
+  
+  {
+    name: "Sequencer"
+  },
+  
+  {},
+  
+  {
+    name: "State Machine"
+  },
+  {
+    name: "State", 
+    wave: "5|.3....4...",
+    data: ["TX","-> RX","RX"]
+  },
+  {
+    name: "Transition",
+    wave: "0|.3....0...",
+    data: ["-> RX"]
+  },
+  
+  {},
+  
+  {
+    name: "Outputs"
+  },
+  {
+    name: "TX inhibit", 
+    wave: "0|..1......."
+  },
+  {
+    name: "PA PTT",
+    wave: "1|...0......"
+  },
+  {
+    name: "Coax Relay A",
+    wave: "1|....0....."
+  },
+  {
+    name: "Coax Relay B",
+    wave: "1|.....0...."
+  },
+  {
+    name: "Preamp PWR",
+    wave: "0|......1..."
+  },
+
+]}

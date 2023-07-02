@@ -13,5 +13,31 @@ Whether I'll use an interrupt to trigger on flank or simply evaluate high/low st
 
 Maybe some form of table-based state machine to easily add stages and transitioning to the right next state?
 
-`<Insert state diagram>`
+![Basic state machine timing diagram](/doc/Wavedrom_Basic_Diagram_white.png)
+`Wavedrom_Basic_Diagram.png`
 
+# State machine
+So, a state machine may be a useful method to keep track of where one is in the sequence of events going from RX -> TX or TX -> RX.
+
+## Initialization / Power-up
+![Timing diagram for state transition from TX to RX](/doc/Wavedrom_Detail_Init_white.png)
+
+## RX -> TX
+![Timing diagram for state transition from TX to RX](/doc/Wavedrom_Basic_Diagram_To_TX_white.png)
+
+### RX -> TX -> RX
+
+![Timing diagram for state transition from RX, partly to TX, then back to RX](/doc/Wavedrom_Detail_Diagram_RX-TX-RX_white.png)
+
+## TX -> RX
+![Timing diagram for state transition from TX to RX](/doc/Wavedrom_Basic_Diagram_To_RX_white.png)
+
+### TX -> RX -> TX
+This is where one is transmitting, but experience a glitch in TX from radio which begins a transition to RX, but aborts somewhere and returns to TX.
+
+![Timing diagram for state transition from RX, partly to TX, then back to RX](/doc/Wavedrom_Detail_Diagram_TX-RX-TX_white.png)
+
+# Dwell time
+Upon entering every state, set a minimum dwell time for that state to allow for energy to stabilize in the system (eg. DC bias for preamp; depending on coax length, you want a certain minimum to allow the rising edge to reach full round-trip).
+
+This may remove the need for a "inter-state" delay period, and depending on what the Radio TX signal is when entering (or exiting) the state determines which direction one goes. So, in principle, by toggling TX line fast enough, it may be possible to stay in the twilight zone between RX and TX indefinitely?

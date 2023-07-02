@@ -1,0 +1,71 @@
+2023-07-02 12:15
+
+{signal: [
+  {
+    name: "Inputs",
+    wave: "3.....4|..5......|.4........",
+    data: ["Start-up", "Receive","Transmit","Receive"]
+  },
+  {
+    name: "Radio TX", 
+    wave: "x0.....|.1.......|.0........"
+  },
+  {
+    name: "PA Power", 
+    wave: "0..6...|6.......6|..........",
+    data: ["","Turn on PA after sequencer!"]
+  },
+  
+  {},
+  
+  {
+    name: "States"
+  },
+  {
+    name: "State", 
+    wave: "0.....4|..0....5.|.0....4...",
+    data: ["RX", "TX","RX"]
+  },
+  {
+    name: "Transition",
+    wave: "x2....0|..5....0.|.4....0...",
+    data: ["Init", "-> TX", "-> RX"]
+  },
+  
+  {},
+  
+  {
+    name: "Outputs"
+  },
+  {
+    name: "TX inhibit", 
+    wave: "x1.....|.......0.|..1......."
+  },
+  {
+    name: "PA PTT",
+    wave: "x.0....|......1..|...0......"
+  },
+  {
+    name: "Coax Relay A",
+    wave: "x..0...|.....1...|....0....."
+  },
+  {
+    name: "Coax Relay B",
+    wave: "x...0..|....1....|.....0...."
+  },
+  {
+    name: "Preamp PWR",
+    wave: "xx...1.|...0.....|......1..."
+  },
+  
+  
+  {},
+  
+  {},
+  
+  {
+    name: "none", 
+    wave: "x.345x|=.x", 
+    data: ["head", "body", "tail", "data"]
+  }
+]}
