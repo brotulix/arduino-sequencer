@@ -1,0 +1,7 @@
+{
+    "sketch": "arduino-metdetect.ino",
+    "configuration": "cpu=atmega328old",
+    "board": "arduino:avr:nano",
+    "programmer": "arduino:avrisp",
+    "port": "/dev/ttyUSB0"
+}
