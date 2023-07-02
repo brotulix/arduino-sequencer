@@ -17,7 +17,6 @@ So, a state machine may be a useful method to keep track of where one is in the 
 Maybe some form of table-based state machine to easily add stages and transitioning to the right next state?
 
 ![Basic state machine timing diagram](/doc/Wavedrom_Basic_Diagram_white.png)
-`Wavedrom_Basic_Diagram.png`
 
 Whether I'll use an interrupt to trigger on flank or simply evaluate high/low state in a loop is TBD.
 
