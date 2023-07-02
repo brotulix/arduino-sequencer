@@ -5,7 +5,7 @@ Additions to come later will be switching coax relays to allow co-listening with
 
 The same sequencer is intended for 144 and 432 MHz operation, for which I own power amplifiers with opposite PTT controls; one will activate when PTT is pulled high, one will activate when PTT is pulled low. To solve this with the least hassle, I'll control the PTT using a photo diode surrounded by four diodes, and select active high or active low using a toggle switch:
 
-`<Insert schematic>`
+![Simplified PA PTT circuit](/doc/KiCad_Detail_Simplified_PTT.png)
 
 I also want to add a potensiometer to set the delay for each stage. First design will use the same delay for both entering and leaving transmit state, but I may want to allow for faster delays going one direction or the other later?
 
