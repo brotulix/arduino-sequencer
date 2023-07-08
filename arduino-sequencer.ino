@@ -97,10 +97,10 @@ void setState(states_t new_state)
         return;
     }
 
-    Serial.print("state = ");
-    Serial.print(state);
-    Serial.print(", new_state = ");
-    Serial.println(new_state);
+    //Serial.print("state = ");
+    //Serial.print(state);
+    //Serial.print(", new_state = ");
+    //Serial.println(new_state);
 
     switch(new_state)
     {
@@ -112,7 +112,7 @@ void setState(states_t new_state)
                 digitalWrite(pin_rx, 1);
                 digitalWrite(pin_tx, 0);
                 state = new_state;
-                Serial.println("Entered full RX");
+                //Serial.println("Entered full RX");
             }
             break;
         }
@@ -124,7 +124,7 @@ void setState(states_t new_state)
                 digitalWrite(pin_rx, 0);
                 digitalWrite(pin_tx, 1);
                 state = new_state;
-                Serial.println("Entered full TX");
+                //Serial.println("Entered full TX");
             }
             break;
         }
@@ -136,29 +136,29 @@ void setState(states_t new_state)
                 digitalWrite(pin_rx, 0);
                 digitalWrite(pin_tx, 0);
                 state = new_state;
-                Serial.println("Entered transitioning state");
+                //Serial.println("Entered transitioning state");
             }
             break;
         }
     }
 
-    if(state != new_state)
-    {
-        Serial.print("Illegal state change? ");
-        Serial.print(state);
-        Serial.print(" -> ");
-        Serial.println(new_state);
-    }
+    //if(state != new_state)
+    //{
+    //    Serial.print("Illegal state change? ");
+    //    Serial.print(state);
+    //    Serial.print(" -> ");
+    //    Serial.println(new_state);
+    //}
 
 }
 
 void setCountdown(unsigned long us)
 {
-    if(us > 0)
-    {
-        Serial.print("Setting countdown: ");
-        Serial.println(us);
-    }
+    //if(us > 0)
+    //{
+    //    Serial.print("Setting countdown: ");
+    //    Serial.println(us);
+    //}
     countdown_us = us;
 }
 
@@ -187,12 +187,12 @@ void transition(bool to_tx)
         new_level = levels[level].transitions.down;
     }
 
-    Serial.print("Transition: TX = ");
-    Serial.print(to_tx);
-    Serial.print(", level = ");
-    Serial.print(level);
-    Serial.print(", new_level = ");
-    Serial.println(new_level);
+    //Serial.print("Transition: TX = ");
+    //Serial.print(to_tx);
+    //Serial.print(", level = ");
+    //Serial.print(level);
+    //Serial.print(", new_level = ");
+    //Serial.println(new_level);
 
     switch(new_level)
     {
@@ -299,40 +299,40 @@ void transition(bool to_tx)
         }
     }
 
-    Serial.print("Transitioned to level ");
-    Serial.println(level);
+    //Serial.print("Transitioned to level ");
+    //Serial.println(level);
 
 }
 
 void Initialize()
 {
 
-    Serial.println("Initializing...");
+    //Serial.println("Initializing...");
 
     // Set each pin as output and to a safe-ish state, then set state to RX.
     pinMode(levels[LEVEL_TX_INHIBIT].pin, OUTPUT);
     digitalWrite(levels[LEVEL_TX_INHIBIT].pin, 0);
-    Serial.println("TX Inhibit...");
+    //Serial.println("TX Inhibit...");
     delay(levels[LEVEL_TX_INHIBIT].delay_us / 1000);
 
     pinMode(levels[LEVEL_PA_PTT].pin, OUTPUT);
     digitalWrite(levels[LEVEL_PA_PTT].pin, 0);
-    Serial.println("PA PTT...");
+    //Serial.println("PA PTT...");
     delay(levels[LEVEL_PA_PTT].delay_us / 1000);
 
     pinMode(levels[LEVEL_COAX_RELAY_B].pin, OUTPUT);
     digitalWrite(levels[LEVEL_COAX_RELAY_B].pin, 0);
-    Serial.println("Coax relay B...");
+    //Serial.println("Coax relay B...");
     delay(levels[LEVEL_COAX_RELAY_B].delay_us / 1000);
 
     pinMode(levels[LEVEL_COAX_RELAY_A].pin, OUTPUT);
     digitalWrite(levels[LEVEL_COAX_RELAY_A].pin, 0);
-    Serial.println("Coax relay A...");
+    //Serial.println("Coax relay A...");
     delay(levels[LEVEL_COAX_RELAY_A].delay_us / 1000);
 
     pinMode(levels[LEVEL_PREAMP].pin, OUTPUT);
     digitalWrite(levels[LEVEL_PREAMP].pin, 0);
-    Serial.println("Pre-amplifier...");
+    //Serial.println("Pre-amplifier...");
     delay(levels[LEVEL_PREAMP].delay_us / 1000);
 
     pinMode(pin_tx, OUTPUT);
@@ -372,8 +372,8 @@ unsigned long getDeltaMicros()
 
 void setup()
 {
-    Serial.begin(115200);
-    delay(500);
+    //Serial.begin(115200);
+    //delay(500);
 
     Initialize();
     //delay(500);
@@ -391,13 +391,13 @@ void loop()
         if(countdown_us >= delta_micros)
         {
             countdown_us -= delta_micros;
-            Serial.print(".");
+            //Serial.print(".");
             first = true;
         }
         else
         {
-            Serial.print("Countdown reached near zero: ");
-            Serial.println(countdown_us);
+            //Serial.print("Countdown reached near zero: ");
+            //Serial.println(countdown_us);
             setCountdown(0);
         }
     }
@@ -414,5 +414,5 @@ void loop()
         //Serial.println(txenable);
         transition(txenable);
     }
-    delay(loop_interval_ms);
+    //delay(loop_interval_ms);
 }
