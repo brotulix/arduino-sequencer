@@ -29,21 +29,6 @@ struct s_transitions
     states_t down;
 };
 
-struct s_transitions state_transitions[STATE_NUM_STATES] = 
-{
-    // STATE_UNINITIALIZED can only go to STATE_RX or remain STATE_UNINITIALIZED
-    {STATE_UNINITIALIZED, STATE_RX},
-
-    // STATE_RX can only go to STATE_TRANSITION or remain STATE_RX
-    {STATE_RX, STATE_TRANSITION},
-
-    // STATE_TRANSITION can go either to STATE_RX or STATE_TX
-    {STATE_RX, STATE_TX},
-    
-    // STATE_TX can only go to STATE_TRANSITION or remain STATE_TX
-    {STATE_TRANSITION, STATE_TX}
-};
-
 typedef enum
 {
     LEVEL_UNINITIALIZED,
@@ -85,7 +70,7 @@ struct l_properties levels[LEVEL_NUM_LEVELS] = {
     {LEVEL_TX,               100000, -1,                  {LEVEL_TX_INHIBIT,      LEVEL_TX}}
 };
 
-unsigned long countdown_us = 0; //levels[LEVEL_UNINITIALIZED].delay_us;
+unsigned long countdown_us = 0;
 
 unsigned long micros_previous_loop = 0;
 
@@ -133,8 +118,9 @@ void setState(states_t new_state)
         {
             if(state == STATE_RX || state == STATE_TX)
             {
-                digitalWrite(pin_rx, 0);
-                digitalWrite(pin_tx, 0);
+                // both 1 for red/green LED to show orange during transition
+                digitalWrite(pin_rx, 1);
+                digitalWrite(pin_tx, 1);
                 state = new_state;
                 //Serial.println("Entered transitioning state");
             }
