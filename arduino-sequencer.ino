@@ -395,10 +395,10 @@ void loop()
             Serial.println();
             first = false;
         }
-        txenable = digitalRead(pin_txenable);
-        //Serial.print("Time's up! TXEnable: ");
-        //Serial.println(txenable);
+        
+        // Active Low...
+        txenable = !digitalRead(pin_txenable);
+        
         transition(txenable);
     }
-    //delay(loop_interval_ms);
 }
