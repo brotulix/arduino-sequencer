@@ -371,19 +371,17 @@ void loop()
     bool txenable = false;
     
     unsigned long delta_micros = getDeltaMicros();
+    
     // Don't count down if already at zero
     if(delta_micros && countdown_us)
     {
         if(countdown_us >= delta_micros)
         {
             countdown_us -= delta_micros;
-            //Serial.print(".");
             first = true;
         }
         else
         {
-            //Serial.print("Countdown reached near zero: ");
-            //Serial.println(countdown_us);
             setCountdown(0);
         }
     }
